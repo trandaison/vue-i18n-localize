@@ -1,37 +1,52 @@
-# NPM Module Boilerplate
-
-[![Build Status](https://travis-ci.org/flexdinesh/npm-module-boilerplate.svg?branch=master)](https://travis-ci.org/flexdinesh/npm-module-boilerplate) [![dependencies Status](https://david-dm.org/flexdinesh/npm-module-boilerplate/status.svg)](https://david-dm.org/flexdinesh/npm-module-boilerplate) [![devDependencies Status](https://david-dm.org/flexdinesh/npm-module-boilerplate/dev-status.svg)](https://david-dm.org/flexdinesh/npm-module-boilerplate?type=dev) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
-**Start developing your NPM module in seconds** ✨
-
-Readymade boilerplate setup with all the best practices to kick start your npm/node module development.
-
-Happy hacking =)
-
-# Features
-
-* **ES6/ESNext** - Write _ES6_ code and _Babel_ will transpile it to ES5 for backwards compatibility
-* **Test** - _Mocha_ with _Istanbul_ coverage
-* **Lint** - Preconfigured _ESlint_ with _Airbnb_ config
-* **CI** - _TravisCI_ configuration setup
-* **Minify** - Built code will be minified for performance
-
-# Commands
-- `npm run clean` - Remove `lib/` directory
-- `npm test` - Run tests with linting and coverage results.
-- `npm test:only` - Run tests without linting or coverage.
-- `npm test:watch` - You can even re-run tests on file changes!
-- `npm test:prod` - Run tests with minified code.
-- `npm run test:examples` - Test written examples on pure JS for better understanding module usage.
-- `npm run lint` - Run ESlint with airbnb-config
-- `npm run cover` - Get coverage report for your code.
-- `npm run build` - Babel will transpile ES6 => ES5 and minify the code.
-- `npm run prepublish` - Hook for npm. Do all the checks before publishing your module.
-
 # Installation
-Just clone this repo and remove `.git` folder.
+`Vue-i18n-localize` requires [`momentjs`](https://momentjs.com/) to be installed.
 
+Use command bellow to install packages:
 
-# License
+```sh
+npm install moment --save
+npm install https://github.com/framgia/Azui_Server_User.git --save
 
-MIT © Dinesh Pandiyan
+# or if you're using yarn
+yarn add moment -S
+yarn add https://github.com/framgia/Azui_Server_User.git -S
+```
+
+# Getting Started
+```js
+// main.js
+
+import Vue from 'vue';
+import I18nLocalize from 'vue-i18n-localize';
+
+Vue.use(I18nLocalize, {
+  locale: 'vi',
+  formats: {
+    vi: {
+      full: '[ngày] D [tháng] M [năm] Y'
+    }
+  }
+})
+```
+
+# API
+### Options
+| Options | Type | Description | Example |
+|---|---|---|---|
+| `locale` | `String` | The locale format. | `'vi'` |
+| `formats` | `Object` | The format object for formatting | `{vi: {short: 'D/M/Y'}, en: {short: 'Y-M-Y'}}` |
+
+### Methods
+* `this.$l(date, key, locale)` returns a formatted string.
+
+| Arguments | Required? | Description |
+|---|---|---|
+| `date` | `yes` | accept a `Date` object or [`momentjs`](https://momentjs.com/) object |
+| `key` | `no` | The key to pattern in `formats` object |
+| `locale` | `no` | The locale which defined in the options. |
+
+**Examples:**
+```js
+this.$l(new Date(), 'full', 'vi')
+this.$l(moment(), 'full')
+```
