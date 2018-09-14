@@ -1,0 +1,51 @@
+{
+  "name": "vue-i18n-localize",
+  "version": "1.0.0",
+  "description": "Internationalization for datetime for Vue.js",
+  "main": "./src/index.js",
+  "scripts": {
+    "clean": "rimraf lib",
+    "test": "npm run lint && npm run cover",
+    "test:prod": "cross-env BABEL_ENV=production npm run test",
+    "test:only": "mocha --require babel-core/register --require babel-polyfill --recursive",
+    "test:watch": "npm test -- --watch",
+    "test:examples": "node examples/",
+    "cover": "istanbul cover _mocha -- --require babel-core/register --require babel-polyfill --recursive",
+    "lint": "eslint src test",
+    "build": "cross-env BABEL_ENV=production babel src --out-dir lib",
+    "prepublish": "npm run clean && npm run lint && npm run test && npm run build"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trandaison/vue-i18n-localize.git"
+  },
+  "author": "Son Tran - https://trandaison.github.io",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-minify": "^0.3.0",
+    "chai": "^4.1.2",
+    "cross-env": "^5.1.3",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-standard": "^4.0.0",
+    "istanbul": "^1.0.0-alpha",
+    "mocha": "^5.0.0",
+    "moment": "^2.22.2",
+    "rimraf": "^2.6.2"
+  }
+}
